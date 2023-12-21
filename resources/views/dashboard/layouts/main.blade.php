@@ -26,7 +26,6 @@
 				<div class="sidebar-header position-relative">
 					<div class="d-flex justify-content-between align-items-center flex-column">
 						<div class="logo">
-								{{-- <a href="index.html"><img src="{{ asset('assets/compiled/svg/logo.svg') }}" alt="Logo" srcset=""></a> --}}
 								<h6>Rekapitulasi Keterlambatan</h6>
 						</div>
 						<div class="theme-toggle d-flex gap-2  align-items-center mt-2">

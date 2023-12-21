@@ -39,7 +39,6 @@ class LateController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request->file('bukti')->store('bukti');
 
         $validatedData = $request->validate([
             'student_id' => 'required',
@@ -48,18 +47,9 @@ class LateController extends Controller
             'bukti' => 'image|file|required',
         ]);
 
-        // if($request->file('bukti')){
         $validatedData['bukti'] = $request->file('bukti')->store('bukti');
-        // }
 
         Late::create($validatedData);
-
-        // Late::create([
-        //     'student_id'=> $request->student_id,
-        //     'date_time_late'=> $request->date_time_late,
-        //     'information'=> $request->information,
-        //     'bukti'=> $request->bukti,
-        // ]);
 
         return redirect()->route('keterlambatan.home')->with('added', 'Berhasil menambahkan data keterlambatan!');
     }
@@ -142,13 +132,5 @@ class LateController extends Controller
             $query->where('user_id', $user->id);
         })->get();
         return view('dashboard.keterlambatan.ps.index', compact('lates', 'students'));
-    }
-
-    public function search(Request $request)
-    {
-        // $keyword = $request->search;
-        // $request->session()->put('date', $keyword);
-        // $orders = Order::whereDate('created_at', '=', $keyword)->paginate(10);
-        // return view("order.kasir.index", compact('orders'));
     }
 }

@@ -105,7 +105,6 @@ class UserController extends Controller
         User::where('id', $id)->delete();
 
         return redirect()->back()->with('deleted', 'Berhasil menghapus data pengguna!');
-        // return response()->json("berhasil", 200);
     }
 
     public function loginAuth(Request $request) {
