@@ -1,56 +1,3 @@
-{{-- @extends('dashboard.layouts.main')
-
-@section('container')
-  <h1>Tambah Data Keterlambatan</h1>
-  <p>Home / Data Keterlambatan / Tambah Data Keterlambatan</p>
-
-  <div class="card px-3">
-    <div class="card-body">
-      <form action="{{ route('keterlambatan.store') }}" method="post" enctype="multipart/form-data">
-        @csrf
-    
-        <div class="mb-3">
-          <label for="student_id" class="form-label">Siswa</label>
-          <select class="form-select" name="student_id" id="student_id" required>
-            <option selected hidden disabled>Pilih</option>
-            @foreach ($students as $student)
-              <option value="{{ $student['id'] }}">{{ $student['name'] }}</option>
-            @endforeach
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="date" class="form-label">Tanggal</label>
-          <input type="datetime-local" class="form-control @error('date_time_late') is-invalid @enderror" id="date" name="date_time_late">
-          @error('date_time_late')
-            <div class="invalid-feedback">
-              {{ $message }}
-            </div>
-          @enderror
-        </div>
-        <div class="mb-3">
-          <label for="information" class="form-label">Keterangan Keterlambatan</label>
-          <textarea class="form-control @error('information') is-invalid @enderror" id="information" name="information"></textarea>
-          @error('information')
-            <div class="invalid-feedback">
-              {{ $message }}
-            </div>
-          @enderror
-        </div>
-        <div class="mb-3">
-          <label for="bukti" class="col-sm-2 col-form-label">Bukti</label>
-          <input type="file" class="form-control @error('bukti') is-invalid @enderror" id="bukti" name="bukti">
-          @error('bukti')
-            <div class="invalid-feedback">
-              {{ $message }}
-            </div>
-          @enderror
-        </div>
-        <button type="submit" class="btn btn-primary my-3 col-sm-3">Tambah</button>
-      </form>
-    </div>
-  </div>
-@endsection --}}
-
 @extends('dashboard.layouts.main')
 
 @section('container')
@@ -104,10 +51,9 @@
                     <label for="date">Tanggal</label>
                     @php
                       setlocale(LC_ALL, 'IND');
+                      date_default_timezone_set('Asia/Jakarta');
                     @endphp
-                    <input type="datetime-local" class="form-control @error('date_time_late') is-invalid @enderror" id="date" name="date_time_late"
-                      value="{{ Carbon\Carbon::now() }}"
-                    >
+                    <input type="datetime-local" class="form-control @error('date_time_late') is-invalid @enderror" id="date" name="date_time_late" value="{{ Carbon\Carbon::now() }}">
                     @error('date_time_late')
                       <div class="invalid-feedback">
                         The date field is required
